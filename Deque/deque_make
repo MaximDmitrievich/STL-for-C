@@ -1,0 +1,16 @@
+CC=gcc
+CFLAGS=-c -std=c11 -Werror -pedantic -Wall -Wextra -o3
+SOURCES=example.c deque.c
+OBJECTS=$(SOURCES:.c=.o)
+EXECUTABLE=deque
+
+all: $(EXECUTABLE)
+
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(OBJECTS) -o $@
+
+.c.o:
+	$(CC) $(CFLAGS) $< -o $@
+
+clean:
+	rm -frd *.o $(EXECUTABLE)
